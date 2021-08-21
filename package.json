@@ -1,0 +1,27 @@
+{
+  "name": "socialnetworkapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexgorshkov02/socialNetworkAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexgorshkov02/socialNetworkAPI/issues"
+  },
+  "homepage": "https://github.com/alexgorshkov02/socialNetworkAPI#readme",
+  "dependencies": {
+    "date-fns": "^2.23.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7"
+  }
+}

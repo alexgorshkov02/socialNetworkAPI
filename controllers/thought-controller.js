@@ -27,7 +27,7 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
-  // get one user by id
+  // get one thought by id
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
       .select("-__v")
@@ -36,6 +36,35 @@ const thoughtController = {
         console.log(err);
         res.sendStatus(400);
       });
+  },
+
+  // update a thought
+  updateThought({ params, body }, res) {
+    Thought.findOneAndUpdate({ _id: params.id }, body, {
+      new: true,
+      runValidators: true,
+    })
+      .then((dbThoughtData) => {
+        if (!dbThoughtData) {
+          res.status(404).json({ message: "No thought found with this id!" });
+          return;
+        }
+        res.json(dbThoughtData);
+      })
+      .catch((err) => res.json(err));
+  },
+
+  // remove a thought
+  removeThought({ params }, res) {
+    Thought.findOneAndDelete({ _id: params.id })
+      .then((deletedThought) => {
+        if (!deletedThought) {
+          res.status(404).json({ message: "No thought with this id!" });
+          return;
+        }
+        res.json({ message: `Thought with id: ${params.id} has been removed!` });
+      })
+      .catch((err) => res.json(err));
   },
 };
 

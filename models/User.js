@@ -41,7 +41,7 @@ const UserSchema = new Schema(
 );
 
 // get total count of users in the array
-PizzaSchema.virtual("userCount").get(function () {
+UserSchema.virtual("userCount").get(function () {
   return this.friends.length;
 });
 

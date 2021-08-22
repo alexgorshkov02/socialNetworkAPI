@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-import { format } from 'date-fns'
+const { format } = require("date-fns");
 
 const ReactionSchema = new Schema(
   {
@@ -19,7 +19,7 @@ const ReactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: createdAtVal => format(createdAtVal)
+      get: createdAtVal => format(createdAtVal, 'MM/dd/yyyy')
     },
   },
   {
@@ -35,14 +35,14 @@ const ThoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      unique: true,
+      required: true,
       minlength: 1,
       maxlength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: createdAtVal => format(createdAtVal)
+      get: createdAtVal => format(createdAtVal, 'MM/dd/yyyy')
     },
     username: {
       type: String,
@@ -62,7 +62,7 @@ const ThoughtSchema = new Schema(
 );
 
 // get total count of reactions in the array
-PizzaSchema.virtual("reactionCount").get(function () {
+ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 

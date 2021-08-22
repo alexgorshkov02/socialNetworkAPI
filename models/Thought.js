@@ -1,11 +1,11 @@
-const { Schema, model } = require("mongoose");
+const { Schema, Types, model } = require("mongoose");
 const { format } = require("date-fns");
 
 const ReactionSchema = new Schema(
   {
     reactionId: {
       type: Schema.Types.ObjectId,
-      default: new Object(),
+      default: () => new Types.ObjectId(),
     },
     reactionBody: {
       type: String,

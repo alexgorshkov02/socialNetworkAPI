@@ -9,17 +9,17 @@ const ReactionSchema = new Schema(
     },
     reactionBody: {
       type: String,
-      required: true,
+      required: [true, "Please provide a reaction"],
       maxlength: 280,
     },
     username: {
       type: String,
-      required: true,
+      required: [true, "Please provide a username"],
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: createdAtVal => format(createdAtVal, 'MM/dd/yyyy')
+      get: (createdAtVal) => format(createdAtVal, "MM/dd/yyyy"),
     },
   },
   {
@@ -35,19 +35,18 @@ const ThoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      required: true,
+      required: "Please provide a thought",
       minlength: 1,
       maxlength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: createdAtVal => format(createdAtVal, 'MM/dd/yyyy')
+      get: (createdAtVal) => format(createdAtVal, "MM/dd/yyyy"),
     },
     username: {
       type: String,
-      required: true,
-      //  TODO: (The user that created this thought). Do we need a relation between this schema and User schema?
+      required: "Please provide a username",
     },
     reactions: [ReactionSchema],
   },

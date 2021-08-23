@@ -4,14 +4,14 @@ const UserSchema = new Schema(
   {
     username: {
       type: String,
-      unique: true,
-      required: true,
+      unique: [true, "This username is already exists"],
+      required: [true, "Please provide a username"],
       trim: true,
     },
     email: {
       type: String,
-      unique: true,
-      required: true,
+      unique: [true, "This email is already exists"],
+      required: [true, "Please provide an email"],
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
         "Please fill a valid email address",
